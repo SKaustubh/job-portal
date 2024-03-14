@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import vaidator from 'validator'
+import validator from 'validator'
 
 //schema
 
@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
         },
         password:{
             type: 'string',
-            required:[true,'Password is required']
+            required:[true,'Password is required'],
+            minlength:[6,'password must be at least 6 characters']
         },
         lastName:{
             type: 'string',
@@ -26,6 +27,6 @@ const userSchema = new mongoose.Schema({
             type: 'string',
             default: 'India'
         }
-},timestamps({createdAt: 'created_at', updatedAt: 'updated_at'}))
+},{timestamps:{createdAt: 'created_at', updatedAt: 'updated_at'}})
 
 export default mongoose.model('User',userSchema)
