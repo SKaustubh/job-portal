@@ -1,24 +1,25 @@
 import userModel from "../models/userModel.js"
+import colors from 'colors'
 
-export const registerController = async (req, res,next) => {
+export const registerController = async (req, res, next) => {
 
     const { name, email, password } = req.body
 
     //validate
     if (!name) {
-       next(`name is required`)
+        next(`name is required `)
     }
     if (!email) {
-       next(`email is required`)
+        next(`email is required`)
     }
     if (!password) {
-      next(`password is required`)
+        next(`password is required`)
     }
     // if we are creating a user with same email
     const existingUser = await userModel.findOne({ email })
 
     if (existingUser) {
-       next(`user with this email already exists`)
+        next(`user with this email already exists`)
     }
 
     const user = await userModel.create({
@@ -31,10 +32,4 @@ export const registerController = async (req, res,next) => {
         message: 'user created',
         user,
     });
-
-
-
-    next(error);
- 
-
 }
