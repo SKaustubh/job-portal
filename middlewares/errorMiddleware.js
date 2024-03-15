@@ -1,6 +1,6 @@
 // error middleware || next function
 
-
+// 1. create a file in middlewares folder called errorMiddleware.js
 
 const errorMiddleware = (err, req, res, next) => {
     console.log(err);
