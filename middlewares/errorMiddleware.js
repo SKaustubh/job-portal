@@ -1,6 +1,6 @@
 // error middleware || next function
 
-import { _default } from "validator";
+
 
 const errorMiddleware = (err, req, res, next) => {
     console.log(err);
