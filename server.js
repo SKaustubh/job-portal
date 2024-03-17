@@ -15,6 +15,7 @@ import testRoutes from './routes/testRoutes.js'
 import authRoutes from './routes/authRoutes.js'
 import errorMiddleware from './middlewares/errorMiddleware.js';
 import userRoutes from './routes/userRoutes.js'
+import jobsRoutes from './routes/jobsRoutes.js'
 //dot config
 dotenv.config()
 
@@ -31,8 +32,9 @@ app.use(morgan("dev"))
 
 //routes
 app.use('/api/v1/test', testRoutes)
-app.use("/api/v1/auth",authRoutes)
-app.use("/api/v1/user",userRoutes)
+app.use("/api/v1/auth", authRoutes)
+app.use("/api/v1/user", userRoutes)
+app.use("/api/v1/job", jobsRoutes);
 
 //validation middlewares
 app.use(errorMiddleware);
@@ -41,6 +43,6 @@ app.use(errorMiddleware);
 const PORT = process.env.PORT || 2524;
 
 // listen
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`node server running in ${(process.env.DEV_MODE).blue}  and server started at ${(PORT).yellow}`);
 })
